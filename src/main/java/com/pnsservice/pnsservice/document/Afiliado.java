@@ -14,11 +14,13 @@ public class Afiliado implements Serializable {
 
     @Id
     @NotNull
-    private String id;
+    private Long id;
 
     private String credencial;
 
     private Set<String> tokens;
+
+    public Afiliado() {}
 
     public Afiliado(String credencial)
     {
