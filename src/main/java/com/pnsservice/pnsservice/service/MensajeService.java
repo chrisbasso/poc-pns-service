@@ -14,7 +14,7 @@ import java.util.List;
 public class MensajeService
 {
     @Autowired
-    MensajeRepository mensajeRepository;
+    private MensajeRepository mensajeRepository;
 
     public Mensaje create(String title, String text, Afiliado addressee)
     {

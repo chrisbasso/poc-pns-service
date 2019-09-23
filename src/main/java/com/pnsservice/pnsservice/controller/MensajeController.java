@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class MensajeController {
 
     @Autowired
-    MensajeService mensajeService;
+    private MensajeService mensajeService;
 
     @PostMapping(value="/addMensaje")
     public ResponseEntity<Object> addToken(@RequestBody Mensaje mensajeRequest)
