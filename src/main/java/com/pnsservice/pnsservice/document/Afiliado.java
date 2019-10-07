@@ -1,24 +1,26 @@
 package com.pnsservice.pnsservice.document;
 
+import com.pnsservice.pnsservice.dto.PushResponse;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Document(collection = "Afiliado")
-public class Afiliado implements Serializable {
+public class Afiliado implements Serializable
+{
 
     @Id
     @NotNull
-    private Long id;
+    private String id;
 
     private String credencial;
 
-    private Set<String> tokens;
+    private Set<Token> tokens;
+
+    private List<PushResponse> pushNotifications;
 
     public Afiliado() {}
 
@@ -26,6 +28,7 @@ public class Afiliado implements Serializable {
     {
         this.credencial = credencial;
         this.tokens = new HashSet<>();
+        this.pushNotifications = new ArrayList<>();
     }
 
     public String getCredencial()
@@ -38,19 +41,28 @@ public class Afiliado implements Serializable {
         this.credencial = credencial;
     }
 
-    public Set<String> getTokens()
+    public Set<Token> getTokens()
     {
         return tokens;
     }
 
-    public void setTokens(Set<String> tokens)
+    public void setTokens(Set<Token> tokens)
     {
         this.tokens = tokens;
     }
 
-    public void addToken(String token)
+    public void addToken(Token token)
     {
         this.tokens.add(token);
+    }
+
+
+    public List<PushResponse> getPushNotifications() {
+        return pushNotifications;
+    }
+
+    public void setPushNotifications(List<PushResponse> pushNotifications) {
+        this.pushNotifications = pushNotifications;
     }
 
     @Override

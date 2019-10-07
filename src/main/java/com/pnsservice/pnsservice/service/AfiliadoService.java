@@ -1,13 +1,15 @@
 package com.pnsservice.pnsservice.service;
 
 import com.pnsservice.pnsservice.document.Afiliado;
+import com.pnsservice.pnsservice.document.PushNotification;
+import com.pnsservice.pnsservice.document.Token;
+import com.pnsservice.pnsservice.dto.PushResponse;
 import com.pnsservice.pnsservice.repository.AfiliadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class AfiliadoService
@@ -31,7 +33,7 @@ public class AfiliadoService
         return afiliadoRepository.findByCredencial(credencial);
     }
 
-    public Afiliado addToken(String credencial, String token)
+    public Afiliado addToken(String credencial, Token token)
     {
         Optional<Afiliado> afiliado = Optional.ofNullable(afiliadoRepository.findByCredencial(credencial));
         if(afiliado.isPresent())
@@ -45,17 +47,23 @@ public class AfiliadoService
         }
     }
 
+    public void savePushAfiliado(PushNotification pushNotification, PushResponse pushResponse) {
+        Afiliado afiliado = afiliadoRepository.findByCredencial(pushNotification.getCredencial());
+        afiliado.getPushNotifications().add(pushResponse);
+        afiliadoRepository.save(afiliado);
+    }
+
     public void deleteAfiliado(String credencial)
     {
         afiliadoRepository.deleteAfiliadoByCredencial(credencial);
     }
 
-    public Afiliado deleteToken(String token)
+    public Afiliado deleteToken(Token tokens)
     {
-        Optional<Afiliado> afiliado = Optional.ofNullable(afiliadoRepository.findByTokensContains(token));
+        Optional<Afiliado> afiliado = Optional.ofNullable(afiliadoRepository.findByTokensContains(tokens));
         if(afiliado.isPresent())
         {
-            afiliado.get().getTokens().remove(token);
+            afiliado.get().getTokens().remove(tokens);
             return afiliadoRepository.save(afiliado.get());
         }
         return null;

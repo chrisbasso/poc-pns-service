@@ -7,10 +7,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class PnsServiceApplicationTests {
+public class PnsServiceApplicationTests
+{
 
 	@Test
-	public void contextLoads() {
-	}
+	public void contextLoads() {}
 
 }

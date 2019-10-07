@@ -1,5 +1,6 @@
 FROM java:8
-VOLUME /tmp
+VOLUME ["/data/db"]
+WORKDIR /data
 ADD target/pns-service-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 RUN bash -c 'touch /app.jar'

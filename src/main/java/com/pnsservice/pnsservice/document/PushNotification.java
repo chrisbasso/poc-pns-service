@@ -6,8 +6,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@Document(collection = "Mensaje")
-public class Mensaje implements Serializable
+@Document(collection = "PushNotification")
+public class PushNotification implements Serializable
 {
 
     @Id
@@ -15,13 +15,13 @@ public class Mensaje implements Serializable
     private Long id;
     private String title;
     private String text;
-    private Afiliado addressee;
+    private String credencial;
 
-    public Mensaje(String title, String text, Afiliado addressee)
+    public PushNotification(String title, String text, String credencial)
     {
         this.title = title;
         this.text = text;
-        this.addressee = addressee;
+        this.credencial = credencial;
     }
 
     public String getTitle()
@@ -44,13 +44,11 @@ public class Mensaje implements Serializable
         this.text = text;
     }
 
-    public Afiliado getAddressee()
-    {
-        return addressee;
+    public String getCredencial() {
+        return credencial;
     }
 
-    public void setAddressee(Afiliado addressee)
-    {
-        this.addressee = addressee;
+    public void setCredencial(String credencial) {
+        this.credencial = credencial;
     }
 }
