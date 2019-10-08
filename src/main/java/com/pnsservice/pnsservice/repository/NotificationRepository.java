@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.io.Serializable;
 
 @Repository
-public interface MensajeRepository extends MongoRepository<PushNotification, Serializable>
+public interface NotificationRepository extends MongoRepository<PushNotification, Serializable>
 {
 
 }

@@ -10,14 +10,13 @@ import com.pnsservice.pnsservice.document.Ticket;
 import com.pnsservice.pnsservice.document.Token;
 import com.pnsservice.pnsservice.dto.PushResponse;
 import com.pnsservice.pnsservice.repository.AfiliadoRepository;
-import com.pnsservice.pnsservice.repository.MensajeRepository;
+import com.pnsservice.pnsservice.repository.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +24,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class MensajeService
+public class NotificationService
 {
     @Autowired
-    private MensajeRepository mensajeRepository;
+    private NotificationRepository notificationRepository;
 
     @Autowired
     private AfiliadoRepository afiliadoRepository;
@@ -100,18 +99,22 @@ public class MensajeService
                         .to(token)
                         .title(pushNotification.getTitle())
                         .body(pushNotification.getText())
+                        .sound("default")
+                        .channelId("push")
+                        .badge(1)
+                        .priority(Priority.HIGH)
                         .build();
     }
 
     public List<PushNotification> getAll()
     {
-        return mensajeRepository.findAll();
+        return notificationRepository.findAll();
     }
 
     public List<PushNotification> getMensajesByAfiliado(String credencial)
     {
         Afiliado afiliado = new Afiliado();
         afiliado.setCredencial(credencial);
-        return mensajeRepository.findAll((Sort) Example.of(afiliado));
+        return notificationRepository.findAll((Sort) Example.of(afiliado));
     }
 }

@@ -21,7 +21,7 @@ public class AfiliadoTest
     @PostConstruct
     public void init()
     {
-        uri = "http://localhost:" + port;
+        uri = "http://192.168.12.173:" + port;
     }
 
     @Test
