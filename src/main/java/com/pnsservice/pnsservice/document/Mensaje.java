@@ -7,21 +7,19 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Document(collection = "PushNotification")
-public class PushNotification implements Serializable
+public class Mensaje implements Serializable
 {
 
     @Id
     @NotNull
     private Long id;
     private String title;
-    private String text;
-    private String credencial;
+    private String body;
 
-    public PushNotification(String title, String text, String credencial)
+    public Mensaje(String title, String body)
     {
         this.title = title;
-        this.text = text;
-        this.credencial = credencial;
+        this.body = body;
     }
 
     public String getTitle()
@@ -36,19 +34,12 @@ public class PushNotification implements Serializable
 
     public String getText()
     {
-        return text;
+        return body;
     }
 
     public void setText(String text)
     {
-        this.text = text;
+        this.body = text;
     }
 
-    public String getCredencial() {
-        return credencial;
-    }
-
-    public void setCredencial(String credencial) {
-        this.credencial = credencial;
-    }
 }

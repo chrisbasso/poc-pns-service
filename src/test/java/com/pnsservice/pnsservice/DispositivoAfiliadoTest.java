@@ -32,7 +32,8 @@ public class DispositivoAfiliadoTest
     {
         TokenRequest tokenRequest =  new TokenRequest();
         tokenRequest.setCredencial("0218520801");
-        tokenRequest.setTokens(new Token("fcm", "000","Expo000"));
+        tokenRequest.setTokens(new Token("credencial","fcm", "000","Expo000"));
+
 
         given()
                 .contentType("application/json")
@@ -44,7 +45,7 @@ public class DispositivoAfiliadoTest
     @Test
     public void deleteTokenTest()
     {
-        Token token = new Token("fcm", "000","Expo000");
+        Token token = new Token("credencial","fcm", "000","Expo000");
 
         given()
                 .contentType("application/json")

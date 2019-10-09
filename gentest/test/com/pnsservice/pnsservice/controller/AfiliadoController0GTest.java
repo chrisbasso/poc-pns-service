@@ -1,6 +1,5 @@
 package com.pnsservice.pnsservice.controller;
 
-import com.pnsservice.pnsservice.controller.AfiliadoController;
 import java.lang.String;
 import org.junit.After;
 import org.junit.Before;

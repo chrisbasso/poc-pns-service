@@ -1,6 +1,6 @@
 package com.pnsservice.pnsservice.controller;
 
-import com.pnsservice.pnsservice.controller.DispositivoAfiliadoController;
+import com.pnsservice.pnsservice.controller.TokenController;
 import com.pnsservice.pnsservice.document.Token;
 import com.pnsservice.pnsservice.dto.TokenRequest;
 import org.junit.After;

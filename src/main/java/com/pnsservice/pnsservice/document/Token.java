@@ -1,23 +1,39 @@
 package com.pnsservice.pnsservice.document;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Document(collection = "Token")
 public class Token implements Serializable
 {
+    @Id
+    @NotNull
+    private String id;
 
+    private String credencial;
     private String type;
     private String nativeToken;
     private String expoToken;
 
-    public Token(String type, String nativeToken, String expoToken)
-    {
+    public Token() { }
+
+    public Token(String credencial, String type, String nativeToken, String expoToken) {
+        this.credencial = credencial;
         this.type = type;
         this.nativeToken = nativeToken;
         this.expoToken = expoToken;
+    }
+
+    public String getCredencial() {
+        return credencial;
+    }
+
+    public void setCredencial(String credencial) {
+        this.credencial = credencial;
     }
 
     public String getType() {
@@ -45,19 +61,19 @@ public class Token implements Serializable
     }
 
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Token that = (Token) o;
-        return Objects.equals(type, that.type) &&
-                Objects.equals(nativeToken, that.nativeToken) &&
-                Objects.equals(expoToken, that.expoToken);
+        Token token = (Token) o;
+        return
+                Objects.equals(credencial, token.credencial) &&
+                Objects.equals(type, token.type) &&
+                Objects.equals(nativeToken, token.nativeToken) &&
+                Objects.equals(expoToken, token.expoToken);
     }
 
     @Override
-    public int hashCode()
-    {
-        return Objects.hash(type, nativeToken, expoToken);
+    public int hashCode() {
+        return Objects.hash(id, credencial, type, nativeToken, expoToken);
     }
 }

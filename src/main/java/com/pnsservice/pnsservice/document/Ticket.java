@@ -12,17 +12,27 @@ public class Ticket
 
     private Status status;
     private String id;
-    private PushNotification message;
+    private Mensaje message;
     private Details details;
     private LocalDateTime time;
+    private String credencial;
 
-    public Ticket(Status status, String id, PushNotification message, Details details, LocalDateTime time)
+    public Ticket(String credencial, Status status, String id, Mensaje message, Details details, LocalDateTime time)
     {
+        this.credencial = credencial;
         this.status = status;
         this.id = id;
         this.message = message;
         this.details = details;
         this.time = time;
+    }
+
+    public String getCredencial() {
+        return credencial;
+    }
+
+    public void setCredencial(String credencial) {
+        this.credencial = credencial;
     }
 
     public Status getStatus() {
@@ -41,11 +51,11 @@ public class Ticket
         this.id = id;
     }
 
-    public PushNotification getMessage() {
+    public Mensaje getMessage() {
         return message;
     }
 
-    public void setMessage(PushNotification message) {
+    public void setMessage(Mensaje message) {
         this.message = message;
     }
 
