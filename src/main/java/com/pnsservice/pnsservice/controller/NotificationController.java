@@ -4,6 +4,7 @@ import com.google.api.core.ApiFuture;
 import com.google.firebase.messaging.BatchResponse;
 import com.pnsservice.pnsservice.document.PushNotification;
 import com.pnsservice.pnsservice.dto.PushResponse;
+import com.pnsservice.pnsservice.exceptions.AfiliadoInexistenteException;
 import com.pnsservice.pnsservice.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,12 @@ public class NotificationController
     @PostMapping(value="/send")
     public ResponseEntity<Object> sendExpo(@RequestBody PushNotification pushNotificationRequest) throws IOException
     {
-        PushResponse pushResponse = notificationService.sendExpoMessage(pushNotificationRequest);
+        PushResponse pushResponse;
+        try {
+            pushResponse = notificationService.sendExpoMessage(pushNotificationRequest);
+        } catch (AfiliadoInexistenteException e) {
+            return new ResponseEntity<>(e.getMessage(), e.getHttpStatus());
+        }
         return new ResponseEntity<>(pushResponse, HttpStatus.OK);
     }
 

@@ -1,0 +1,14 @@
+2019-10-09 14-10 [main] ERROR root - Failure Result:  Aborting Generation for com.pnsservice.pnsservice.repository.NotificationRepository
+Reason ar.com.cnet.algorithm.TestSuiteGenerationException: ar.com.cnet.algorithm.InvalidClassForTestsGenerationException: GenTest doesn't generate tests for  abstract classes, private classes, synthetic classes, anonymous inner classes or interfaces.
+2019-10-09 14-10 [main] ERROR root - Failure Result:  Aborting Generation for com.pnsservice.pnsservice.repository.AfiliadoRepository
+Reason ar.com.cnet.algorithm.TestSuiteGenerationException: ar.com.cnet.algorithm.InvalidClassForTestsGenerationException: GenTest doesn't generate tests for  abstract classes, private classes, synthetic classes, anonymous inner classes or interfaces.
+2019-10-09 14-11 [main] ERROR root - Failure Result:  Aborting Generation for com.pnsservice.pnsservice.document.Afiliado
+Reason ar.com.cnet.execution.FutureTaskManagerException: java.util.concurrent.ExecutionException: ar.com.cnet.execution.CallSequenceExecutorException: java.lang.IllegalAccessException: Class ar.com.cnet.execution.StatementExecutor can not access a member of class java.lang.Integer with modifiers "static final"
+2019-10-09 14-25 [main] ERROR root - Failure Result:  Aborting Generation for com.pnsservice.pnsservice.repository.NotificationRepository
+Reason ar.com.cnet.algorithm.TestSuiteGenerationException: ar.com.cnet.algorithm.InvalidClassForTestsGenerationException: GenTest doesn't generate tests for  abstract classes, private classes, synthetic classes, anonymous inner classes or interfaces.
+2019-10-09 14-25 [main] ERROR root - Failure Result:  Aborting Generation for com.pnsservice.pnsservice.repository.AfiliadoRepository
+Reason ar.com.cnet.algorithm.TestSuiteGenerationException: ar.com.cnet.algorithm.InvalidClassForTestsGenerationException: GenTest doesn't generate tests for  abstract classes, private classes, synthetic classes, anonymous inner classes or interfaces.
+2019-10-09 14-26 [main] ERROR root - Failure Result:  Aborting Generation for com.pnsservice.pnsservice.document.Token
+Reason ar.com.cnet.execution.FutureTaskManagerException: java.util.concurrent.ExecutionException: ar.com.cnet.execution.CallSequenceExecutorException: java.lang.IllegalAccessException: Class ar.com.cnet.execution.StatementExecutor can not access a member of class java.lang.Integer with modifiers "static final"
+2019-10-09 14-27 [main] ERROR root - Failure Result:  Aborting Generation for com.pnsservice.pnsservice.document.Afiliado
+Reason ar.com.cnet.execution.FutureTaskManagerException: java.util.concurrent.ExecutionException: ar.com.cnet.execution.CallSequenceExecutorException: java.lang.IllegalAccessException: Class ar.com.cnet.execution.StatementExecutor can not access a member of class java.lang.Integer with modifiers "static final"

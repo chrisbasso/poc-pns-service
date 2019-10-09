@@ -9,11 +9,13 @@ import com.pnsservice.pnsservice.document.PushNotification;
 import com.pnsservice.pnsservice.document.Ticket;
 import com.pnsservice.pnsservice.document.Token;
 import com.pnsservice.pnsservice.dto.PushResponse;
+import com.pnsservice.pnsservice.exceptions.AfiliadoInexistenteException;
 import com.pnsservice.pnsservice.repository.AfiliadoRepository;
 import com.pnsservice.pnsservice.repository.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -53,10 +55,14 @@ public class NotificationService
         return FirebaseMessaging.getInstance().sendMulticastAsync(messages);
     }
 
-    public PushResponse sendExpoMessage(PushNotification pushNotification) throws IOException
-    {
-        Set<String> tokens = afiliadoRepository.findByCredencial(pushNotification.getCredencial())
-                .getTokens().stream().map(Token::getExpoToken).collect(Collectors.toSet());
+    public PushResponse sendExpoMessage(PushNotification pushNotification) throws IOException, AfiliadoInexistenteException {
+        Afiliado afiliado = afiliadoRepository.findByCredencial(pushNotification.getCredencial());
+
+        if(afiliado == null){
+            throw new AfiliadoInexistenteException("Afiliado no registrado", HttpStatus.OK);
+        }
+
+        Set<String> tokens = afiliado.getTokens().stream().map(Token::getExpoToken).collect(Collectors.toSet());
 
         List<Message> messages = new ArrayList<>();
 
