@@ -20,7 +20,7 @@ public class TicketControlller {
     @Autowired
     private TicketService ticketService;
 
-    @GetMapping
+    @GetMapping(value = "/{credencial}")
     public ResponseEntity<Object> getTicketsByAfiliado(@PathVariable String credencial)
     {
         List<Ticket> tickets = ticketService.getTicketsByAfiliado(credencial);
